@@ -1,0 +1,76 @@
+---
+layout: post
+---
+
+{% raw %}
+<md-layout class="main-content" v-if="page == 'array' || page == ''">
+	<md-layout md-column>
+		<md-list v-if="0">
+			<md-list-item>
+				<md-icon>whatshot</md-icon>
+				<span v-text="a23.join(', ')"></span>
+				<md-list-expand>
+					<md-list>
+						<md-list-item class="md-inset" v-for="(n, i) in a23">
+							<md-input-container>
+								<label>Number</label>
+								<md-input type="number" v-model.number="a23[i]"></md-input>
+							</md-input-container>
+							<md-button class="md-icon-button md-list-action" @click.native="a23.splice(i,1)">
+								<md-icon>delete</md-icon>
+							</md-button>
+						</md-list-item>
+						<md-list-item class="md-inset">
+							<md-input-container>
+								<label>Number</label>
+								<md-input type="number" v-model.number="a23[a23.length + 1]"></md-input>
+							</md-input-container>
+						</md-list-item>
+					</md-list>
+				</md-list-expand>
+			</md-list-item>
+		</md-list>
+		<md-card>
+			<md-card-area>
+				<md-card-header>
+					<md-card-header-text>
+						<div class="md-title">Изначальный массив</div>
+						<div class="md-subhead">Надо наполнить данными</div>
+					</md-card-header-text>
+					<md-menu md-size="4" md-direction="bottom left">
+						<md-button class="md-icon-button" md-menu-trigger>
+							<md-icon>more_vert</md-icon>
+						</md-button>
+						<md-menu-content>
+							<md-menu-item>
+								<span>Пункт</span>
+							</md-menu-item>
+						</md-menu-content>
+					</md-menu>
+				</md-card-header>
+				<md-card-content v-text="a23.join(', ')"></md-card-content>
+			</md-card-area>
+			<md-card-content>
+				<md-input-container>
+					<label>Редактируется элемент {{n23}}{{n23 == a23.length ? ' (будет вставлен в конец)' : ''}}</label>
+					<md-input type="number" v-model.number.lazy="a23[n23]"></md-input>
+				</md-input-container>
+				<span>Кнопка удалить</span>
+			</md-card-content>
+			<md-card-actions style="justify-content: space-around;">
+				<md-button @click.native="n23 = 0">0</md-button>
+				<md-button v-if="n23 > 2" @click.native="n23 = n23 - 2">{{n23 - 2}}</md-button>
+				<md-button v-else @click.native="void(0)">...</md-button>
+				<md-button v-if="n23 > 1" @click.native="n23 = n23 - 1">{{n23 - 1}}</md-button>
+				<md-button v-else @click.native="void(0)">...</md-button>
+				<md-button class="md-raised md-primary">{{n23}}{{n23 == a23.length ? '*' : ''}}</md-button>
+				<md-button v-if="n23 < a23.length" @click.native="n23 = n23 + 1">{{n23 + 1}}{{n23 + 1 == a23.length ? '*' : ''}}</md-button>
+				<md-button v-else @click.native="void(0)">...</md-button>
+				<md-button v-if="n23 + 1 < a23.length" @click.native="n23 = n23 + 2">{{n23 + 2}}{{n23 + 2 == a23.length ? '*' : ''}}</md-button>
+				<md-button v-else @click.native="void(0)">...</md-button>
+				<md-button @click.native="n23 = a23.length - 1">{{a23.length - 1}}</md-button>
+			</md-card-actions>
+		</md-card>
+	</md-layout>
+</md-layout>
+{% endraw %}

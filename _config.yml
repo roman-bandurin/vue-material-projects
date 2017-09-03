@@ -1,0 +1,22 @@
+title: Проекты на vue-material
+github_username: roman-bandurin
+email: roman.obj@mail.ru
+description: Проекты на vue-material2
+baseurl: ''
+url: ''
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+favicon: iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9UlEQVQ4T7WTz2vTYBjHv0+SxrbJuq4bVVa7ogeFqkNkIP4FepHqweGinjyIFw8yQSjiRHoSPXgRD57UTCqIxYv+BSIMkakFPShd7WBlP9ouaWqa5JEkCMrwIGXP9fm+n/fzPLwvYcCiAc9jGwBlHoZj5fE19g5z5AWGcyxgn3UUUqyKaWr/ab3VYN64AMY1SN4ZTCe+BOFyZz8c4TkIdzCjPv43YN4cB1ABMAXwfYjK1SDsmvcAugJgAUABM8ryb8jfBrpZBOE2AALzGiCeCoPuSxCNAmAwbkBTSlsBujEJoldivzchG6voJTNg0Bs/SODj0VYDtjoGNxJdAvNJaOpi2PPrIUeQMB8AdFFtfkN8rYbWxGHYSipYomyuC8mlD+iO5mCk9/oij9BRLuMS9UOAbpyAQM8kyxgeqb2HZHfRS+xEKzsZtJP1RUQ7K3DkODZyR+DE1DY8PgtNfU0ot1NwJN3XTCxXEdv40WUSvjNTfjN7ILhgqP6ZibhK7O2xRnbHO+P5cDzJ0Qi6cR0k3Nqx2ZST9Y8gdl54UuSu0Ld1R1ZyPkCyzZoXkTXqO7MQxNOt7CH8HErbYO8mIdz8rkTjE8fWG55L4pPVUmEhXaycA7vHghlIfNssFZ6OFStTIrvnrVRG6GQO+nYr2/CU//N3DWzwC+OxueixFY8GAAAAAElFTkSuQmCC
+themes:
+  teal:
+    primary: teal
+    accent: pink
+    warn: deep-orange
+    background: white
+  indigo:
+    primary: indigo
+    accent: pink
+    warn: deep-orange
+    background: white
