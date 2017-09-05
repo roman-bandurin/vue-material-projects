@@ -2,8 +2,8 @@ title: Проекты на vue-material
 github_username: roman-bandurin
 email: roman.obj@mail.ru
 description: Проекты на vue-material2
-baseurl: ''
-url: ''
+theme: jekyll-theme-minimal
+url: site.github.url
 markdown: kramdown
 deployed: true
 exclude:
