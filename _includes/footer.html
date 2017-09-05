@@ -39,9 +39,13 @@
 	<md-bottom-bar-item md-icon="favorite">Favorites</md-bottom-bar-item>
 	<md-bottom-bar-item md-icon="near_me">Nearby</md-bottom-bar-item>
 </md-bottom-bar>
-
+{% if site.deployed %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/vue-material@0.7.1/dist/vue-material.js"></script>
+{% else %}
 <script type="text/javascript" src="/vue.min.js"></script>
 <script type="text/javascript" src="/vue-material.min.js"></script>
+{% endif %}
 
 <script type="text/javascript">
 	Vue.use(VueMaterial);

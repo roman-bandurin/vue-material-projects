@@ -1,50 +1,64 @@
 <header class="site-header" role="banner">
+	<md-toolbar class="md-whiteframe-1dp">
+		<md-button class="md-icon-button" @click.native="$refs.leftSidenav.toggle()">
+			<md-icon>menu</md-icon>
+		</md-button>
 
-  <div class="wrapper">
+		<h1 class="md-title" class="post-title" itemprop="name headline">
+			<span>{{ page.title | default: site.title | default: "some" | escape }}</span>
+			{% if page.date %}
+			| <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+				{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+				{{ page.date | date: date_format }}
+			</time>
+			{% endif %}
+			{% if page.author %}
+				• <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+					<span itemprop="name">{{ page.author }}</span>
+				</span>
+			{% endif %}
+		</h1>
+	</md-toolbar>
 
-    <a class="" ></a>
-
-
-  </div>
+	<md-sidenav class="md-left" ref="leftSidenav">
+		<md-list class="md-dense">
+			{% assign default_paths = site.pages | map: "path" %}
+			{% assign page_paths = site.header_pages | default: default_paths %}
+			<md-list-item>
+				<a class="site-title md-list-item-container md-button" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+			</md-list-item>
+			<md-list-item>
+				<md-layout md-row>
+					<md-layout class="md-toolbar" v-for="type in ['primary','accent','warn','transparent']" v-bind:class="['md-theme-'+$material.currentTheme, 'md-'+type]"></md-layout>
+				</md-layout>
+				<md-list-expand>
+					<md-list-item v-for="theme in themes" @click.native="$material.setCurrentTheme(theme); $refs.leftSidenav.close()">
+						<md-layout md-row>
+							<md-layout class="md-toolbar" v-for="type in ['primary','accent','warn','transparent']" v-bind:class="['md-theme-'+theme, 'md-'+type]"></md-layout>
+						</md-layout>
+					</md-list-item>
+				</md-list-expand>
+			</md-list-item>
+			<md-list-item>
+				<md-layout>Посты</md-layout>
+				<md-list-expand>
+					{% for post in site.posts %}
+					<md-list-item>
+						<a class="post-link md-list-item-container md-button" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+					</md-list-item>
+					{% endfor %}
+				</md-list-expand>
+			</md-list-item>
+			{% if page_paths %}
+				{% for path in page_paths %}
+					{% assign my_page = site.pages | where: "path", path | first %}
+					{% if my_page.title %}
+					<md-list-item>
+						<a class="page-link md-list-item-container md-button" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+					</md-list-item>
+					{% endif %}
+				{% endfor %}
+	    {% endif %}
+		</md-list>
+	</md-sidenav>
 </header>
-<md-toolbar class="md-whiteframe-1dp">
-	<md-button class="md-icon-button" @click.native="$refs.leftSidenav.toggle()">
-		<md-icon>menu</md-icon>
-	</md-button>
-	<h2 class="md-title" v-text="page"></h2>
-</md-toolbar>
-
-<md-sidenav class="md-left" ref="leftSidenav">
-	<md-list class="md-dense">
-		<md-list-item>
-			<md-layout md-row>
-				<md-layout class="md-toolbar" v-for="type in ['primary','accent','warn','transparent']" v-bind:class="['md-theme-'+$material.currentTheme, 'md-'+type]"></md-layout>
-			</md-layout>
-			<md-list-expand>
-				<md-list-item v-for="theme in themes" @click.native="$material.setCurrentTheme(theme); $refs.leftSidenav.close()">
-					<md-layout md-row>
-						<md-layout class="md-toolbar" v-for="type in ['primary','accent','warn','transparent']" v-bind:class="['md-theme-'+theme, 'md-'+type]"></md-layout>
-					</md-layout>
-				</md-list-item>
-			</md-list-expand>
-		</md-list-item>
-		<md-list-item @click.native="page='array'; $refs.leftSidenav.close()">
-			<a class="md-list-item-container md-button">Массив</a>
-		</md-list-item>
-		{% assign default_paths = site.pages | map: "path" %}
-    {% assign page_paths = site.header_pages | default: default_paths %}
-		<md-list-item>
-			<a class="site-title md-list-item-container md-button" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-		</md-list-item>
-		{% if page_paths %}
-			{% for path in page_paths %}
-				{% assign my_page = site.pages | where: "path", path | first %}
-				{% if my_page.title %}
-				<md-list-item>
-					<a class="page-link md-list-item-container md-button" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-				</md-list-item>
-				{% endif %}
-			{% endfor %}
-    {% endif %}
-	</md-list>
-</md-sidenav>

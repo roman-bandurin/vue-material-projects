@@ -5,6 +5,7 @@ description: Проекты на vue-material2
 baseurl: ''
 url: ''
 markdown: kramdown
+deployed: true
 exclude:
   - Gemfile
   - Gemfile.lock
